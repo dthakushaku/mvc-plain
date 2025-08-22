@@ -1,0 +1,20 @@
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Composer
+/vendor/
+composer.lock
+
+# Env & secrets
+.env
+
+# Logs, cache, sessions
+/storage/logs/
+storage/cache/
+*.log
+
+# Uploads (nếu có)
+public/uploads/
