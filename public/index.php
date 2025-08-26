@@ -17,10 +17,10 @@ $routes = [
 ];
 
 // Chuẩn hóa key tra cứu route
-$method   = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+$method   = $_SERVER['REQUEST_METHOD'] ?? 'GET';     // GET, POST, PUT, DELETE...
 $normPath = rtrim($path, '/');                       // bỏ dấu "/" cuối
 if ($normPath === '') $normPath = '/';              // root vẫn là "/"
-$key = $method . ' ' . $normPath;
+$key = $method . ' ' . $normPath;                   // ví dụ: "GET /users"
 
 // Không có route? trả 404
 if (!isset($routes[$key])) {
@@ -30,7 +30,7 @@ if (!isset($routes[$key])) {
 }
 
 // Có route: tách Class & method rồi gọi
-[$class, $method] = $routes[$key];
+[$class, $method] = $routes[$key];              // ví dụ: [App\Controllers\HomeController, 'users']           
 $controller = new $class();                          // new App\Controllers\HomeController()
 $controller->$method();                              // gọi hàm tương ứng (index() hoặc users())
 
@@ -41,7 +41,7 @@ $controller->$method();                              // gọi hàm tương ứng
 
 // Bạn học được gì ở đây?
 
-// Front Controller: mọi request đều qua 1 cửa, giúp kiểm soát chung (auth, log, error).
+// index.pho là Front Controller: mọi request đều qua 1 cửa, giúp kiểm soát chung (auth, log, error).
 
 // Router: ánh xạ URL → Controller method (đơn giản mà hiệu quả).
 
